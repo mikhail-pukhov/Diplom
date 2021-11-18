@@ -118,11 +118,18 @@ resource "aws_security_group" "diplom" {
   }
 }
 
+resource "aws_key_pair" "diplom" {
+  key_name   = "diplom-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCnQXMPZuWbQtnmoxOlBCwWyqdA9xf8FnciVBC65B/RpPrlovIhzh950vaQx3eOjW08ELBA2z/QF59ar8uKCeCWTF5Lc0iAB73UQUgQbSsSICx94yoMb/6HO0J9IEyQxDf1y8wWju3LqieeYd8/n+xnAOd8kIuAIRRM6PMo08YptYp+FWZQysgZXHoylO8BQ+npkzlI5LSVuCTUdlZBbI6UNclrngFcKnCfgXaHyDBDbvAnY+Rq2anwhk0XYsDV+dh5xvfHShXOqLFIbdW98OlWjsDYBHyTi3MN7TuI0lQ0kHLKXq71BlaMM2LqEf8mWkuV+mNg7AFy5S48Q+5C0ygAG83PI/R/TxXANYwJg1y/Ol6MdXknB/aDDWAuVhO6sOobyyz+7lpRnQIy1GQX1EmKGqPL0D74EuXL1VdspAGoUWoiijgPT072uaHnWJStCyIADFN58C+S67ASAenaFr7rFNCorq4XoM+Fn0yVcgjfaYb41WtOQKNTtbbKU3ibouE= user@LAPTOP-JPLSSIOU"
+
+}
+
 resource "aws_instance" "ubuntu1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.diplom.id]
-  subnet_id = "subnet-0b55052cbd31bf310"
+  subnet_id = "subnet-0ae667f254f108fe0"
+  key_name = aws_key_pair.diplom.id
   tags = {
     Name = "node1"
   }
@@ -132,7 +139,8 @@ resource "aws_instance" "ubuntu2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.diplom.id]
-  subnet_id = "subnet-0b55052cbd31bf310"
+  subnet_id = "subnet-0ae667f254f108fe0"
+  key_name = aws_key_pair.diplom.id
   tags = {
     Name = "node2"
   }
@@ -142,7 +150,8 @@ resource "aws_instance" "ubuntu3" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.diplom.id]
-  subnet_id = "subnet-0b55052cbd31bf310"
+  subnet_id = "subnet-0ae667f254f108fe0"
+  key_name = aws_key_pair.diplom.id
   tags = {
     Name = "node3"
   }
@@ -151,7 +160,8 @@ resource "aws_instance" "ubuntu3" {
 resource "aws_instance" "ubuntu4" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  subnet_id = "subnet-0b55052cbd31bf310"
+  subnet_id = "subnet-0ae667f254f108fe0"
+  key_name = aws_key_pair.diplom.id
   tags = {
     Name = "node4"
   }

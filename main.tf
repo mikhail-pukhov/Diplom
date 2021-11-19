@@ -77,7 +77,7 @@ resource "aws_security_group" "diplom" {
       from_port        = 22
       to_port          = 22
       protocol         = "tcp"
-      cidr_blocks      = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24" ]
+      cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = []
       prefix_list_ids = []
       security_groups = []
@@ -98,7 +98,7 @@ resource "aws_security_group" "diplom" {
     }
 
   ] 
-
+  
   egress = [
     {
       description      = "all to VPC"

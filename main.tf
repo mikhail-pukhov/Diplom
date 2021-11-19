@@ -64,7 +64,7 @@ resource "aws_security_group" "diplom" {
       from_port        = 443
       to_port          = 443
       protocol         = "tcp"
-      cidr_blocks      = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24" ]
+      cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = []
       prefix_list_ids = []
       security_groups = []
@@ -90,7 +90,7 @@ resource "aws_security_group" "diplom" {
       from_port        = 80
       to_port          = 80
       protocol         = "tcp"
-      cidr_blocks      = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24" ]
+      cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = []
       prefix_list_ids = []
       security_groups = []
@@ -157,12 +157,3 @@ resource "aws_instance" "ubuntu3" {
   }
 }
 
-resource "aws_instance" "ubuntu4" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-  subnet_id = "subnet-0ae667f254f108fe0"
-  key_name = aws_key_pair.diplom.id
-  tags = {
-    Name = "node4"
-  }
-}

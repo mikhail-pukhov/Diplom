@@ -131,7 +131,7 @@ resource "aws_instance" "ubuntu1" {
   key_name = aws_key_pair.diplom.id
   instance_type = "t3.small"
   root_block_device {
-    volume_size = "100Gib"
+    volume_size = "100"
   }
   tags = {
     Name = "node1"
@@ -145,7 +145,7 @@ resource "aws_instance" "ubuntu2" {
   subnet_id = "subnet-0ae667f254f108fe0"
   key_name = aws_key_pair.diplom.id
   root_block_device {
-    volume_size = "100Gib"
+    volume_size = "100"
   }
   tags = {
     Name = "node2"
@@ -159,7 +159,7 @@ resource "aws_instance" "ubuntu3" {
   subnet_id = "subnet-0ae667f254f108fe0"
   key_name = aws_key_pair.diplom.id
   root_block_device {
-    volume_size = "100Gib"
+    volume_size = "100"
   }
   tags = {
     Name = "node3"

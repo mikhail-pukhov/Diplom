@@ -130,7 +130,6 @@ resource "aws_instance" "ubuntu1" {
   subnet_id = "subnet-0ae667f254f108fe0"
   key_name = aws_key_pair.diplom.id
   instance_type = "t3.small"
-  volume_size = "100Gb"
   tags = {
     Name = "node1"
   }
@@ -142,7 +141,6 @@ resource "aws_instance" "ubuntu2" {
   vpc_security_group_ids = [aws_security_group.diplom.id]
   subnet_id = "subnet-0ae667f254f108fe0"
   key_name = aws_key_pair.diplom.id
-  volume_size = "100Gb"
   tags = {
     Name = "node2"
   }
@@ -154,7 +152,6 @@ resource "aws_instance" "ubuntu3" {
   vpc_security_group_ids = [aws_security_group.diplom.id]
   subnet_id = "subnet-0ae667f254f108fe0"
   key_name = aws_key_pair.diplom.id
-  volume_size = "100Gb"
   tags = {
     Name = "node3"
   }

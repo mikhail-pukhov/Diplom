@@ -126,7 +126,6 @@ resource "aws_key_pair" "diplom" {
 
 resource "aws_instance" "ubuntu1" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.diplom.id]
   subnet_id = "subnet-0ae667f254f108fe0"
   key_name = aws_key_pair.diplom.id

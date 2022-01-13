@@ -84,6 +84,45 @@ resource "aws_security_group" "diplom" {
       self = false
     } 
     ,
+
+    {
+      description      = "Prometeus from VPC"
+      from_port        = 9090
+      to_port          = 9090
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = []
+      prefix_list_ids = []
+      security_groups = []
+      self = false
+    } 
+    ,
+
+    {
+      description      = "Grafana from VPC"
+      from_port        = 3000
+      to_port          = 3000
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = []
+      prefix_list_ids = []
+      security_groups = []
+      self = false
+    } 
+    ,
+
+    {
+      description      = "Alertmana from VPC"
+      from_port        = 9093
+      to_port          = 9093
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = []
+      prefix_list_ids = []
+      security_groups = []
+      self = false
+    } 
+    ,
    
     {
       description      = "SSH from VPC"

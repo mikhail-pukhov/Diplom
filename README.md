@@ -144,14 +144,13 @@ ansible-playbook -i kubespray/inventory/mycluster/inventory.ini  kubespray/clust
 
 5. Было подготовлено тестовое приложение в виде статической странички Nginx [https://github.com/mikhail-pukhov/test_app](https://github.com/mikhail-pukhov/test_app) 
 
-![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/1.png)
 
-6. Был подготовлен докер образ этого приложения и рахмещен на DockerHub [https://hub.docker.com/repository/docker/mikkovrov/test_app](https://hub.docker.com/repository/docker/mikkovrov/test_app)
+6. Был подготовлен докер образ этого приложения и размещен на DockerHub [https://hub.docker.com/repository/docker/mikkovrov/test_app](https://hub.docker.com/repository/docker/mikkovrov/test_app)
 
 ![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/4.png)
 
 
-### Развертыванеи мониторинга и тестового приложения в кластере кубернетис
+### Развертывание мониторинга и тестового приложения в кластере кубернетис
 
 7.  В кластере был развернут пакет kube-prometeus ссылка на репозиторий с этим пакетом  [https://github.com/mikhail-pukhov/kube-prom](https://github.com/mikhail-pukhov/kube-prom)
 
@@ -178,4 +177,6 @@ password: admin
 Ссылка на тестовое приложение:
 
 URL: http://3.141.37.253:30003/
+
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/1.png)
 

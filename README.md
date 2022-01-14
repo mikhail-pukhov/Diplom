@@ -127,7 +127,7 @@
 1. Был создан репозиторий на GitHub с конфигурациями Terraform: [https://github.com/mikhail-pukhov/Diplom](https://github.com/mikhail-pukhov/Diplom)
 
 2. Был создан проект в личном кабинете  Terraform cloud:
-[Image alt](https://github.com/mikhail-pukhov/skr/blob/main/5.png)
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/5.png)
 
 ![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/6.png)
 
@@ -144,7 +144,11 @@ ansible-playbook -i kubespray/inventory/mycluster/inventory.ini  kubespray/clust
 
 5. Было подготовлено тестовое приложение в виде статической странички Nginx [https://github.com/mikhail-pukhov/test_app](https://github.com/mikhail-pukhov/test_app) 
 
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/1.png)
+
 6. Был подготовлен докер образ этого приложения и рахмещен на DockerHub [https://hub.docker.com/repository/docker/mikkovrov/test_app](https://hub.docker.com/repository/docker/mikkovrov/test_app)
+
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/4.png)
 
 
 ### Развертыванеи мониторинга и тестового приложения в кластере кубернетис
@@ -158,7 +162,7 @@ kubectl create -f manifests/setup
 until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
 kubectl create -f manifests/
 ```
-<img width="887" alt="prometheus" src="https://user-images.githubusercontent.com/67638098/143025176-67baaefe-6be5-410d-9a1b-b9620fd4d5a9.png">
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/3.png)
 
 Ссылка на веб интерфейс Grafana:
 
@@ -167,7 +171,7 @@ URL: http://3.141.37.253:30005/
 user: admin
 password: admin
 ```
-<img width="1280" alt="Screenshot 2021-11-29 at 13 36 28" src="https://user-images.githubusercontent.com/67638098/143869430-24748b87-e5b2-44cb-884e-ba7577934c38.png">
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/2.png)
 
 8.  В кластере было развернуто тестовое приложение.
 

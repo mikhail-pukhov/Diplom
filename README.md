@@ -180,3 +180,29 @@ URL: http://3.141.37.253:30003/
 
 ![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/1.png)
 
+
+### Установка и настройка CI/CD
+
+9.  В качестве оркестратора был выбран инструмент TeamCity
+Дистрибутив был скачен с оф сайта и установлен на Windows 11
+Интерфейс доступен по адресу : http://localhost:8111 
+
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/11.png)
+
+Был создан новый проект в качестве тригера любое изменение кода в репозитории с приложением 
+на GitHab.
+И 4 BuildStep:
+1. Сборка образа по Docker файлу
+2. Логин на Docker Hub
+3. Push Docker образа в Docker Hub
+4. Подключение по ssh к кубернетису удаление старой версии приложения установка новой.
+
+
+Был изменен один из файлов приложения конвеер отработал без ошибок приложение в кластере обновилос.
+
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/15.png)
+
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/7.png)
+
+
+

@@ -205,4 +205,102 @@ URL: http://3.141.37.253:30003/
 ![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/7.png)
 
 
+### ДОПОЛНЕНИЯ
+
+### Установка и настройка CI/CD 
+
+В вебинтерфейсе TeamCity  был создан новый проект kot
+
+В настройках версионирования была включена синхронизация и добавлен в качестве VCS root репозиторий 
+GitLab [https://gitlab.com/mikhail-pukhov/kot](https://gitlab.com/mikhail-pukhov/kot)
+
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/21.png)
+
+В этот репозиторий был сделан коммит пустого проекта kot c сервера TeamCity
+
+далее файл конфигурации проекта 
+
+[https://gitlab.com/mikhail-pukhov/kot/-/blob/main/.teamcity/settings.kts](https://gitlab.com/mikhail-pukhov/kot/-/blob/main/.teamcity/settings.kts)
+
+был отредактирован в WED IDE GitLab 
+
+![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/17.png)
+
+В него на языке Kotlin были добавлены параметры авторизации 
+
+ params {
+        password("dockerPassword", "123")
+        password("sshkey", "zxx42be91b4740ef16f584d29f959bd40181917009da8036c30920328d46a060db952b1ce27b89596c45b6fa0ce43d8c3961adf93")
+        password("dockerLogin", "mik")
+    }
+
+4 шага включающих в себя подключение к докерхабу сборка образа приложения пуш этого образа в докерхаб 
+а также подключение к кубернетису и деплой новой версии приложения 
+steps {
+        dockerCommand {
+            name = "docker img"
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "mikkovrov/test_app:latest"
+            }
+        }
+        dockerCommand {
+            name = "docker login"
+            commandType = other {
+                subCommand = "login"
+                commandArgs = "-u %dockerLogin% -p %dockerPassword%"
+            }
+        }
+        dockerCommand {
+            name = "docker push"
+            commandType = push {
+                namesAndTags = "mikkovrov/test_app:latest"
+            }
+        }
+        sshExec {
+            name = "deploy test_app"
+            commands = "cd kube-prom/; kubectl delete -f manifests/test-app-dep.yaml; kubectl create -f manifests/test-app-dep.yaml"
+            targetUrl = "3.141.37.253"
+            authMethod = defaultPrivateKey {
+                username = "ubuntu"
+            }
+            param("jetbrains.buildServer.sshexec.keyFile", "%sshkey%")
+        }
+    }
+
+    и триггер срабатывания конвеера
+
+     triggers {
+        vcs {
+        }
+    }
+})
+
+object HttpsGithubComMikhailPukhovTestAppGitRefsHeadsMain : GitVcsRoot({
+    name = "https://github.com/mikhail-pukhov/test_app.git#refs/heads/main"
+    url = "https://github.com/mikhail-pukhov/test_app.git"
+    branch = "refs/heads/main"
+    branchSpec = "refs/heads/*"
+    authMethod = password {
+        userName = "mikhail-pukhov"
+        password = "123"
+    }
+
+Далее конфигурация была загружена из GitLab на сервер TeamCity 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

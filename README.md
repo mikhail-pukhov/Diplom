@@ -227,15 +227,17 @@ GitLab [https://gitlab.com/mikhail-pukhov/kot](https://gitlab.com/mikhail-pukhov
 ![Image alt](https://github.com/mikhail-pukhov/skr/blob/main/17.png)
 
 В него на языке Kotlin были добавлены параметры авторизации 
-
+...
  params {
         password("dockerPassword", "123")
         password("sshkey", "zxx42be91b4740ef16f584d29f959bd40181917009da8036c30920328d46a060db952b1ce27b89596c45b6fa0ce43d8c3961adf93")
         password("dockerLogin", "mik")
     }
+...
 
 4 шага включающих в себя подключение к докерхабу сборка образа приложения пуш этого образа в докерхаб 
 а также подключение к кубернетису и деплой новой версии приложения 
+...
 steps {
         dockerCommand {
             name = "docker img"
@@ -269,9 +271,11 @@ steps {
             param("jetbrains.buildServer.sshexec.keyFile", "%sshkey%")
         }
     }
+...
 
     и триггер срабатывания конвеера
-
+    
+...
      triggers {
         vcs {
         }
@@ -287,6 +291,8 @@ object HttpsGithubComMikhailPukhovTestAppGitRefsHeadsMain : GitVcsRoot({
         userName = "mikhail-pukhov"
         password = "123"
     }
+...    
+
 
 Далее конфигурация была загружена из GitLab на сервер TeamCity 
 
